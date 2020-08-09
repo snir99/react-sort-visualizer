@@ -28,6 +28,10 @@ const TopBar = () => {
 	}
 
 	const handleAlgorithmSelect = (e) => {
+		dispatch({type: 'RESET'});
+		dispatch({type: 'CLEAR_TIMEOUTIDS'});
+		dispatch({type: 'SET_TRACE', newTrace: []});
+		dispatch({type: 'SET_ARRAY', newArray: data.originalArray});
 		dispatch({type: 'SET_SORTING_ALGORITHM', newSortingAlgorithm: e.target.value});
 	}
 

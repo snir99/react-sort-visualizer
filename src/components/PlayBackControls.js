@@ -101,7 +101,6 @@ const PlayBackControls = () => {
 	const isBackwardDisabled = (data.currentStep <= 0) || (data.isSorting);
 	const isRestartDisabled = data.currentStep <= 0;
 	const isFinalizeDisabled = (data.trace.length === 0) || (data.currentStep >= data.trace.length - 1);
-	const isPlayPauseDisabled = data.currentStep >= data.trace.length - 1;
 
 	return (
 		<div className="playback-controls">
