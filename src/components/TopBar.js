@@ -1,10 +1,8 @@
 import React, { useEffect, useContext } from 'react';
 import { SortContext } from '../contexts/SortContext';
 import { randomIntFromInterval } from '../utils/helpers.js';
-import SortManager from '../sorters/SortManager';
+import sortManager from '../sorters/sortManager';
 const shortid = require('shortid');
-
-const sortManager = new SortManager();
 
 const TopBar = () => {
 	const { data, dispatch } = useContext(SortContext);
@@ -46,7 +44,7 @@ const TopBar = () => {
 							id="algorithm" 
 							onChange={(e) => handleAlgorithmSelect(e)}
 							value={data.sortingAlgorithm}>
-						{sortManager.getAllAlgorithms().map((value) => 
+						{sortManager.sortingAlgorithmsNames.map((value) => 
 							<option value={value}
 									key={shortid.generate()}
 							>{value}</option>)}

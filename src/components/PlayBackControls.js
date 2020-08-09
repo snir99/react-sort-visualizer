@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { SortContext } from '../contexts/SortContext';
-import bubbleSort from '../sorters/bubbleSort.js';
+import sortManager from '../sorters/sortManager';
 import { faPlay, faStepForward, faStepBackward,
 		 faFastForward, faFastBackward, faPause } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -10,7 +10,7 @@ const PlayBackControls = () => {
 
 	const sort = () => {
 		dispatch({type: 'SET_IS_SORTING', newIsSorting: true});
-		const tempTrace = bubbleSort(data.array, data.length);
+		const tempTrace = sortManager.sort(data.array, data.length, data.sortingAlgorithm);
 		dispatch({type: 'SET_TRACE', newTrace: [...tempTrace]});
 		animate(tempTrace);
 	}
