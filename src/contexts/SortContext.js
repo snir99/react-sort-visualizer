@@ -12,7 +12,7 @@ const initialState = {
 	currentStep: 0,
 	isSorting: false,
 	sortingAlgorithm: 'Bubble sort',
-	speed: 1,
+	speed: 100,
 	timeoutIds: [],
 	stats: {
 		swaps: 0,

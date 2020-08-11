@@ -169,6 +169,11 @@ body {
   opacity: 1;
 }
 
+.playback-controls > .speed {
+  font-size: 1.6rem;
+  margin: 10px 35px;
+}
+
 /* TopBar */
 .header {
   background-color: #222;
@@ -361,6 +366,8 @@ body {
   .header .menu-icon, .header .menu-btn {
     display: none;
   }
+
+
 }
 
 @media (max-width: 844px) {

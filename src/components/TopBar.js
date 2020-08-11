@@ -37,8 +37,8 @@ const TopBar = () => {
 
 	return (
 		<header className="header">
-				<input className="menu-btn" type="checkbox" id="menu-btn" />
-				<label className="menu-icon" htmlFor="menu-btn"><span className="nav-icon"></span></label>
+			<input className="menu-btn" type="checkbox" id="menu-btn" />
+			<label className="menu-icon" htmlFor="menu-btn"><span className="nav-icon"></span></label>
 			
 			<div className="logo">Sort Visualizer</div>
 			

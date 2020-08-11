@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { SortContext } from '../contexts/SortContext';
 import sortManager from '../sorters/sortManager';
 import { faPlay, faStepForward, faStepBackward,
@@ -7,6 +7,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const PlayBackControls = () => {
 	const { data, dispatch } = useContext(SortContext);
+
+	useEffect(() => {
+		if(data.isSorting === true) {
+			pause();
+			play();
+		}
+	}, [data.speed]);
 
 	const sort = () => {
 		dispatch({type: 'SET_IS_SORTING', newIsSorting: true});
@@ -22,30 +29,38 @@ const PlayBackControls = () => {
 				dispatch({type: 'UPDATE_ELEMENTS', step});
 				dispatch({type: 'INCREASE_CURRENT_STEP'});
 				dispatch({type: 'UPDATE_STATS', step, direction: 1});
-			}, index * 100);
+			}, index * data.speed);
 			tempTimeoutIds.push(timeoutId);
 		});
 
 		const timeoutId = setTimeout(() => {
 			dispatch({type: 'SET_IS_SORTING', newIsSorting: false});
 			dispatch({type: 'CLEAR_TIMEOUTSIDS'});;
-		}, tempTrace.length * 100);
+		}, tempTrace.length * data.speed);
 
 		tempTimeoutIds.push(timeoutId);
 
 		dispatch({type: 'SET_TIMEOUTIDS', newTimeoutIds: [...tempTimeoutIds]});
 	}
 
+	const play = () => {
+		dispatch({type: 'SET_IS_SORTING', newIsSorting: true});
+		const tempTrace = data.trace.slice(data.currentStep);
+		animate(tempTrace);
+	}
+
+	const pause = () => {
+		dispatch({type: 'SET_IS_SORTING', newIsSorting: false});
+		dispatch({type: 'CLEAR_TIMEOUTIDS'});
+	}
+
 	const handlePlayPause = () => {
 		if(data.currentStep === -1) { // Initiale sort
 			sort();
 		} else if(data.isSorting === true) { // pause
-			dispatch({type: 'SET_IS_SORTING', newIsSorting: false});
-			dispatch({type: 'CLEAR_TIMEOUTIDS'});
+			pause();
 		} else if(data.currentStep < data.trace.length - 1) { // continue
-			dispatch({type: 'SET_IS_SORTING', newIsSorting: true});
-			const tempTrace = data.trace.slice(data.currentStep);
-			animate(tempTrace);
+			play();
 		}
 	}
 
@@ -96,6 +111,11 @@ const PlayBackControls = () => {
 		dispatch({type: 'SET_IS_SORTING', newIsSorting: false});
 	}
 
+	// NOTE: useEffect above handles the pause and replay with the new speed
+	const handleSpeed = (e) => {
+		dispatch({type: 'SET_SPEED', newSpeed: e.target.value});
+	}
+
 	const isForwardDisabled = (data.currentStep >= data.trace.length - 1) || 
 							  (data.trace.length === 0) || (data.isSorting);
 	const isBackwardDisabled = (data.currentStep <= 0) || (data.isSorting);
@@ -128,6 +148,19 @@ const PlayBackControls = () => {
 					className="finalize">
 					<FontAwesomeIcon icon={faFastForward}/>
 			</button>
+
+			<div className="speed">
+				fast
+				<input type="range" 
+						min="10" 
+						max="200"
+						value={data.speed}
+						onChange={(e) => handleSpeed(e)} 
+						className="slider" 
+						id="speedRange"
+				/>
+				slow
+			</div>
 		</div>
 	);
 }
