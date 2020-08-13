@@ -1,9 +1,10 @@
 import { newTrace, addToTrace, swap } from '../utils/helpers.js';
 
 const bubbleSort = (array, length) => {
+	const tempArray = [...array];
 	const tempTrace = newTrace([...array]);
 	let i, j, swapped;
-	const tempArray = [...array];
+	
 	for(i = 0; i < length - 1; i++) 
 	{
 		swapped = false;

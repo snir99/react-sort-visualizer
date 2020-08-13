@@ -1,9 +1,9 @@
 import { newTrace, addToTrace, swap } from '../utils/helpers.js';
 
 const selectionSort = (array, length) => {
-    let i, j, minIdx;
     const tempTrace = newTrace([...array]);
     const tempArray = [...array];
+    let i, j, minIdx;
     
     // One by one move boundary of unsorted subarray 
     for (i = 0; i < length - 1; i++) 
