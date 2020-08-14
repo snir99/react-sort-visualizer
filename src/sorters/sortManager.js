@@ -2,13 +2,15 @@ import bubbleSort from './bubbleSort';
 import selectionSort from './selectionSort';
 import insertionSort from './insertionSort';
 import quickSort from './quickSort';
+import mergeSort from './mergeSort';
 
 const sortManager = {
 	sortingAlgorithmsNames: [
 		'Bubble sort', 
 		'Selection sort', 
 		'Insertion sort', 
-		'Quick sort'
+		'Quick sort',
+		'Merge sort'
 	],
 	sort(tempArr, length, algorithm) {
 		switch(algorithm) {
@@ -18,6 +20,8 @@ const sortManager = {
 				return insertionSort(tempArr, length);
 			case 'Quick sort':
 				return quickSort(tempArr, length);
+			case 'Merge sort':
+				return mergeSort(tempArr, length);
 			default: // Bubble sort
 				return bubbleSort(tempArr, length);
 		}
