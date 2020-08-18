@@ -18,14 +18,15 @@ export const newTrace = (tempArray) => {
 	}]
 }
 
-export const addToTrace = (tempTrace, tempArray, action="", tempCompareElements = [], tempVisitedElements = [], tempDoneElements = []) => {
+export const addToTrace = (tempTrace, tempArray, action="", tempCompareElements = [], tempVisitedElements = [], tempDoneElements = [], pivot = -1) => {
 	const lastPostion = tempTrace.length === 0 ? 0 : tempTrace.length - 1;
 	tempTrace.push({
 		array: [...tempArray],
 		action,
 		compareElements: [...tempCompareElements],
 		visitedElements: [...addToVisitedElements([...tempTrace[lastPostion].visitedElements], [...tempVisitedElements])],
-		doneElements: [...tempTrace[lastPostion].doneElements, ...tempDoneElements]
+		doneElements: [...tempTrace[lastPostion].doneElements, ...tempDoneElements],
+		pivot
 	});
 }
 

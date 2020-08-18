@@ -8,6 +8,7 @@ const initialState = {
 	doneElements: [],
 	compareElements: [],
 	visitedElements: [],
+	pivot: -1,
 	trace: [],
 	currentStep: 0,
 	isSorting: false,

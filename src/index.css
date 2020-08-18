@@ -3,6 +3,7 @@
   --untouched-color: #3d383a;
   --visited-color: #ffd54f;
   --compring-color: #c43417;
+  --pivot-color: #b714bc;
   --finished-color: #0ea546;
   --topbar-height: 50px;
 }
@@ -35,6 +36,10 @@ body {
 
 .comparing {
   background-color: var(--compring-color, darkred);
+}
+
+.pivot {
+  background-color: var(--pivot-color, purple);
 }
 
 .finished {

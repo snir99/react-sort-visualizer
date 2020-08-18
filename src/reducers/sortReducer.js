@@ -13,6 +13,8 @@ const sortReducer = (state, action) => {
 			return {...state, compareElements: action.newCompareElements};
 		case 'SET_VISITED_ELEMENTS':
 			return {...state, visitedElements: action.newVisitedElements};
+		case 'SET_PIVOT':
+			return {...state, pivot: action.newPivot};
 		case 'SET_TRACE':
 			return {...state, trace: action.newTrace};
 		case 'SET_CURRENT_STEP':
@@ -45,7 +47,8 @@ const sortReducer = (state, action) => {
 				array: action.step.array,
 				visitedElements: action.step.visitedElements,
 				compareElements: action.step.compareElements,
-				doneElements: action.step.doneElements
+				doneElements: action.step.doneElements,
+				pivot: action.step.pivot
 			}
 		case 'RESET':
 			return {

@@ -5,7 +5,8 @@ import { SortContext } from '../../contexts/SortContext';
 const Bar = ({ val, idx, maxVal }) => {
 	const { data } = useContext(SortContext);
 
-	let classes = data.compareElements.includes(idx) ? 'comparing' : 
+	let classes = data.pivot === idx ? 'pivot' :
+				  data.compareElements.includes(idx) ? 'comparing' : 
 				  data.doneElements.includes(idx) ? 'finished' : 
 				  data.visitedElements.includes(idx) ? 'visited' : 'untouched';
 

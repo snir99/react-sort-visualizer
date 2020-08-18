@@ -21,20 +21,20 @@ const partition = (tempArray, tempTrace, low, high) => {
     let i = (low-1); // index of smaller element
     for (let j = low; j < high; j++) 
     { 
-        addToTrace(tempTrace, tempArray, 'COMPARE', [j, high], [j, high]);
+        addToTrace(tempTrace, tempArray, 'COMPARE', [j, high], [j, high], [], high);
 
         // If current element is smaller than the pivot 
         if (tempArray[j] < pivot) 
         { 
             i++; 
 
-            addToTrace(tempTrace, tempArray, 'SWAP');
+            addToTrace(tempTrace, tempArray, 'SWAP', [], [], [], high);
             // swap arr[i] and arr[j] 
             swap(tempArray, i, j);
         } 
     } 
 
-    addToTrace(tempTrace, tempArray, 'SWAP');
+    addToTrace(tempTrace, tempArray, 'SWAP', [], [], [], high);
     // swap arr[i+1] and arr[high] (or pivot)
     swap(tempArray, i + 1, high); 
 
