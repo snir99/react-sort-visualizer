@@ -14,17 +14,15 @@ const Bar = ({ val, idx, maxVal }) => {
 	const styles = {
 		height: `${(val * 100 / maxVal).toFixed()}%`,
 		width: `calc(${100 / data.length}% - 2px)`,
-		margin: '0 1px',
-		display: 'inline-block',
-		color: 'white'
+		fontSize: data.length <= 30 ? '2rem' : '1.6rem'
 	}
+	
 	return (
 		<div className={classes} style={styles}>
-			
+			{data.length <= 40 ? val : null}
 		</div>
 	);
 }
-// {data.array.length <= 30 ? val : undefined}
 
 Bar.propTypes = {
 	val: PropTypes.number,

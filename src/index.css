@@ -49,6 +49,7 @@ body {
 /* VisualizationBox */
 .visualization-box {
   position: absolute;
+  display: flex;
   top: calc(var(--topbar-height) + 10px);
   background-color: #e0dbdd;
   width: 89%;
@@ -56,6 +57,17 @@ body {
   padding: 15px;
   margin: 0 9px;
   border-radius: 20px;
+}
+
+.bar {
+  text-align: center;
+  color: white;
+  display: flex;
+  margin: 0 1px;
+  padding-bottom: 2px;
+  align-self: flex-end;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 /* InfoBox */
